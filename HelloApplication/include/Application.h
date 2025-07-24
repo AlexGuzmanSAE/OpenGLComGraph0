@@ -1,7 +1,12 @@
 #pragma once
+#include <map>
+
 
 class Application
 {
+private:
+
+
 public:
 	Application();
 

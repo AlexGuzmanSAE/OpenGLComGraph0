@@ -1,4 +1,5 @@
 #include "Application.h"
+
 #include <iostream>
 
 Application::Application()
@@ -8,7 +9,7 @@ Application::Application()
 
 void Application::SetUp()
 {
-	std::cout << "Application::SetUp" << std::endl;
+	
 }
 
 void Application::Update()

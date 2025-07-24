@@ -38,25 +38,22 @@ int main(void)
         std::cout << "Error al inicializar GLAD" << std::endl;
         return -1;
     }
-
+    
     applicaion.SetUp();
-
-    
-    
 
     glfwSetKeyCallback(window, check_keyboard);
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
-        /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
-        applicaion.Update();
-        /* Swap front and back buffers */
-        //glfwSwapBuffers(window);
-        applicaion.Draw();
         /* Poll for and process events */
         glfwPollEvents();
+        applicaion.Update();
+        /* Render here */
+        glClear(GL_COLOR_BUFFER_BIT);
+        applicaion.Draw();
+        /* Swap front and back buffers */
+        glfwSwapBuffers(window);
     }
 
     glfwTerminate();
