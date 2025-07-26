@@ -23,7 +23,7 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "HelloTriangle", NULL, NULL);
+    window = glfwCreateWindow(1020, 720, "HelloTriangle", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -39,9 +39,8 @@ int main(void)
         return -1;
     }
     
-    applicaion.SetUp();
-
     glfwSetKeyCallback(window, check_keyboard);
+    applicaion.SetUp();
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
