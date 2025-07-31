@@ -1,7 +1,10 @@
+
 #include "Application.h"
 #include <iostream>
 #include "ShaderFuncs.h"
 #include <vector>
+
+
 
 void Application::SetUpShaders()
 {
@@ -10,10 +13,11 @@ void Application::SetUpShaders()
 	std::string fragmentShader{ loadTextFile("Shaders/fragmentPassthru.glsl") };
 
 	//Cargar programa
-	shaders["passthru"] = InitializeProgram(vertexShader, fragmentShader);
+	mapShaders["passthru"] = InitializeProgram(vertexShader, fragmentShader);
 	std::cout << "Shaders compilados\n";
 
-	time_id = glGetUniformLocation(shaders["passthru"], "time");
+	mapIDVertex["time_id"] = glGetUniformLocation(mapShaders["passthru"], "time");
+	mapIDVertex["colors_id"] = glGetUniformLocation(mapShaders["passthru"], "newColorPress");
 }
 
 void Application::SetUpGeometry()
@@ -21,8 +25,10 @@ void Application::SetUpGeometry()
 	std::vector<GLfloat> triangle
 	{
 		-1.0f, 1.0f, -1.0f, 1.0f,  // vertice 0
+		1.0f, 1.0f, -1.0f, 1.0f,   // vertive 3 triang 2
 		-1.0f, -1.0f, -1.0f, 1.0f, // vertice 1
 		1.0f, -1.0f, -1.0f, 1.0f,  // vertice 2
+
 	};
 	
 	std::vector<GLfloat> vecTriangleColors
@@ -30,6 +36,10 @@ void Application::SetUpGeometry()
 		1.0f, 0.0f, 0.0f, 1.0f,  // RED
 		0.0f, 1.0f, 0.0f, 1.0f, // GREEN 
 		0.0f, 0.0f, 1.0f, 1.0f,  // BLUE
+
+		1.0f, 0.0f, 0.0f, 1.0f,  // RED
+		0.0f, 0.0f, 1.0f, 1.0f,  // BLUE
+		1.0f, 1.0f, 1.0f, 1.0f, // GREEN 
 	};
 
 	// Crear VertexArrayObject
@@ -38,7 +48,7 @@ void Application::SetUpGeometry()
 	glGenVertexArrays(1, &VAO_id);
 	glBindVertexArray(VAO_id);
 
-	geometry["triangulo"] = VAO_id;
+	mapGeometry["triangulo"] = VAO_id;
 
 	
 	// Crear  TriangleGeometry VertexBufferObject
@@ -64,11 +74,10 @@ void Application::SetUpGeometrySingleArray()
 	std::vector<GLfloat> triangle
 	{
 		-1.0f, 1.0f, -1.0f, 1.0f,  // vertice 0
-		-1.0f, -1.0f, -1.0f, 1.0f, // vertice 1
-		1.0f, -1.0f, -1.0f, 1.0f,  // vertice 2
-
 		1.0f, 0.0f, 0.0f, 1.0f,  // RED
+		-1.0f, -1.0f, -1.0f, 1.0f, // vertice 1
 		0.0f, 1.0f, 0.0f, 1.0f,  // GREEN
+		1.0f, -1.0f, -1.0f, 1.0f,  // vertice 2
 		0.0f, 0.0f, 1.0f, 1.0f,  // BLUE
 	};
 
@@ -79,7 +88,7 @@ void Application::SetUpGeometrySingleArray()
 		glGenVertexArrays(1, &VAO_id);
 		glBindVertexArray(VAO_id);
 
-		geometry["triangulo"] = VAO_id;
+		mapGeometry["triangulo"] = VAO_id;
 
 
 		// Crear  TriangleGeometry VertexBufferObject
@@ -89,18 +98,18 @@ void Application::SetUpGeometrySingleArray()
 			&triangle[0], GL_STATIC_DRAW);
 	}
 	// Pasar arreglo de vertices
-	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, (void*)&triangle[0]); //geometria
+	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0); //geometria
 	glEnableVertexAttribArray(0);
 
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (void*)&triangle[11]); // colores
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(4 * sizeof(GLfloat))); // colores
 	glEnableVertexAttribArray(1);
 }
 
 void Application::SetUp()
 {
 	SetUpShaders();
-	SetUpGeometry();
-	//SetUpGeometrySingleArray();
+	//SetUpGeometry();
+	SetUpGeometrySingleArray();
 }
 
 void Application::Update()
@@ -110,24 +119,61 @@ void Application::Update()
 
 void Application::Draw()
 {
-	// std::cout << "Application::Draw" << std::endl;
-	
 	// Seleccionamos programa
-	glUseProgram(shaders["passthru"]);
+	glUseProgram(mapShaders["passthru"]);
 
 	//Pasar el resto de los parametros para el programa
 	// TODO
-	glUniform1f(time_id, time);
+	
+
+	glUniform1f(mapIDVertex["time_id"], time);
+	glUniform4f(mapIDVertex["colors_id"], r, g, b, a);
 
 	// Seleccionar la geometría (del triangulo)
-	glBindVertexArray(geometry["triangulo"]);
+	glBindVertexArray(mapGeometry["triangulo"]);
 
 	// glDraw()
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 
 }
 
-void Application::KeyBoard()
+void Application::KeyBoard(int key, int scancode, int action, int mods)
 {
-	std::cout << "Application::KeyBoard" << std::endl;
+	if (key == GLFW_KEY_P && action == GLFW_PRESS)
+	{
+		std::cout << "P" << std::endl;
+		//cambiar colores
+		r = 0.5f;
+		g = 1.0f;
+		b = 0.5f;
+		a = 1.0f;
+	}
+	else if (key == GLFW_KEY_P && action == GLFW_RELEASE)
+	{
+		r = 1.0f;
+		g = 1.0f;
+		b = 1.0f;
+		a = 1.0f;
+	}
+	else if (key == GLFW_KEY_O && action == GLFW_PRESS)
+	{
+		r = 2.0f;
+		g = 1.0f;
+		b = 1.0f;
+		a = 1.0f;
+	}
+	else if (key == GLFW_KEY_I && action == GLFW_PRESS)
+	{
+		r = 1.0f;
+		g = 2.0f;
+		b = 1.0f;
+		a = 1.0f;
+	}
+	else if (key == GLFW_KEY_U && action == GLFW_PRESS)
+	{
+		r = 1.0f;
+		g = 0.0f;
+		b = 2.0f;
+		a = 1.0f;
+	}
 }

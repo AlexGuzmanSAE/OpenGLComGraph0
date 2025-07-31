@@ -12,6 +12,8 @@ void check_keyboard(GLFWwindow* window, int key, int scancode, int action, int m
     }
 }
 
+
+
 int main(void)
 {
     GLFWwindow* window;
