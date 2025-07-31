@@ -3,10 +3,9 @@
 #include <iostream>
 #include "ShaderFuncs.h"
 #include <vector>
+#include "glm/gtc/type_ptr.hpp"
 
-
-
-void Application::SetUpShaders()
+void Application::SetUpShaderPassthru()
 {
 	//Cargar shaders
 	std::string vertexShader{ loadTextFile("Shaders/vertexPassthru.glsl") };
@@ -16,8 +15,27 @@ void Application::SetUpShaders()
 	mapShaders["passthru"] = InitializeProgram(vertexShader, fragmentShader);
 	std::cout << "Shaders compilados\n";
 
-	mapIDVertex["time_id"] = glGetUniformLocation(mapShaders["passthru"], "time");
-	mapIDVertex["colors_id"] = glGetUniformLocation(mapShaders["passthru"], "newColorPress");
+	mapUniforms["time_id"] = glGetUniformLocation(mapShaders["passthru"], "time");
+	mapUniforms["colors_id"] = glGetUniformLocation(mapShaders["passthru"], "newColorPress");
+}
+
+void Application::SetUpShaderTransforms()
+{
+	//Cargar shaders
+	std::string vertexShader{ loadTextFile("Shaders/vertexTrans.glsl") };
+	std::string fragmentShader{ loadTextFile("Shaders/fragmentTrans.glsl") };
+
+	//Cargar programa
+	mapShaders["transforms"] = InitializeProgram(vertexShader, fragmentShader);
+	std::cout << "Shaders compilados\n";
+
+	mapUniforms["camera_id"] = glGetUniformLocation(mapShaders["transforms"], "camera");
+	mapUniforms["projection_id"] = glGetUniformLocation(mapShaders["transforms"], "projection");
+}
+
+void Application::SetUpShaders()
+{
+	SetUpShaderTransforms();
 }
 
 void Application::SetUpGeometry()
@@ -110,24 +128,35 @@ void Application::SetUp()
 	SetUpShaders();
 	//SetUpGeometry();
 	SetUpGeometrySingleArray();
+
+	//inicializar params camara
+	eye = glm::vec3(0.0f, 0.0f, 2.0f);
+	center = glm::vec3(0.0f, 0.0f, 1.0f);
+	projection = glm::perspective(glm::radians(45.0f), (1020.0f/720.0f), 0.1f, 10.0f);
+
+	
 }
 
 void Application::Update()
 {
 	time += 0.0001f;
+	center = glm::vec3(cos(time), 0.0f, 1.f);
+	eye = glm::vec3(0.0f, 0.0f, 2.5f + cos(time));
+	// Actualizar eye
+	// Actualizar center
+	// Actualizar camara
+	camera = glm::lookAt(eye, center, glm::vec3(0.0f, 1.0f, 0.0f));
 }
 
 void Application::Draw()
 {
 	// Seleccionamos programa
-	glUseProgram(mapShaders["passthru"]);
-
-	//Pasar el resto de los parametros para el programa
-	// TODO
+	glUseProgram(mapShaders["transforms"]);
 	
-
-	glUniform1f(mapIDVertex["time_id"], time);
-	glUniform4f(mapIDVertex["colors_id"], r, g, b, a);
+	glUniform1f(mapUniforms["time_id"], time);
+	glUniform4f(mapUniforms["colors_id"], r, g, b, a);
+	glUniformMatrix4fv(mapUniforms["camera_id"], 1, GL_FALSE, glm::value_ptr(camera));
+	glUniformMatrix4fv(mapUniforms["projection_id"], 1, GL_FALSE, glm::value_ptr(projection));
 
 	// Seleccionar la geometría (del triangulo)
 	glBindVertexArray(mapGeometry["triangulo"]);
@@ -140,6 +169,10 @@ void Application::Draw()
 void Application::KeyBoard(int key, int scancode, int action, int mods)
 {
 	if (key == GLFW_KEY_P && action == GLFW_PRESS)
+	{
+		glfwWindowShouldClose(window);
+	}
+	else if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 	{
 		std::cout << "P" << std::endl;
 		//cambiar colores
