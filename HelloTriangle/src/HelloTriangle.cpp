@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "iostream"
 
+
 Application applicaion;
 
 void check_keyboard(GLFWwindow* window, int key, int scancode, int action, int mods)
