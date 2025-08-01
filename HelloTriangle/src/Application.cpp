@@ -140,10 +140,10 @@ void Application::SetUp()
 void Application::Update()
 {
 	time += 0.0001f;
-	center = glm::vec3(cos(time), 0.0f, 1.f);
-	eye = glm::vec3(0.0f, 0.0f, 2.5f + cos(time));
-	// Actualizar eye
 	// Actualizar center
+	center = glm::vec3(cos(time), 0.0f, 1.f);
+	// Actualizar eye
+	eye = glm::vec3(0.0f, 0.0f, 2.5f + cos(time));
 	// Actualizar camara
 	camera = glm::lookAt(eye, center, glm::vec3(0.0f, 1.0f, 0.0f));
 }

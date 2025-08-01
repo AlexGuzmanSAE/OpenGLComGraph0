@@ -133,21 +133,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\glad.c" />
-    <ClCompile Include="src\HelloTriangle.cpp" />
-    <ClCompile Include="src\ShaderFuncs.cpp" />
+    <None Include="Shaders\fragmentPassthru.glsl" />
+    <None Include="Shaders\fragmentTrans.glsl" />
+    <None Include="Shaders\transforms.glsl" />
+    <None Include="Shaders\vertexPassthru.glsl" />
+    <None Include="Shaders\vertexTrans.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Application.h" />
     <ClInclude Include="include\ShaderFuncs.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\fragmentPassthru.glsl" />
-    <None Include="Shaders\fragmentTrans.glsl" />
-    <None Include="Shaders\transforms.glsl" />
-    <None Include="Shaders\vertexPassthru.glsl" />
-    <None Include="Shaders\vertexTrans.glsl" />
+    <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\glad.c" />
+    <ClCompile Include="src\HelloTriangle.cpp" />
+    <ClCompile Include="src\ShaderFuncs.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
