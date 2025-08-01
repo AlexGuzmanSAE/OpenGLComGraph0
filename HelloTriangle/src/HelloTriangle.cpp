@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "iostream"
 
+
 Application applicaion;
 
 void check_keyboard(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -28,7 +29,7 @@ int main(void)
         glfwTerminate();
         return -1;
     }
-
+    
     /* Make the window's context current */
     glfwMakeContextCurrent(applicaion.window);
 

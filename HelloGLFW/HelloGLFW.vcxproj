@@ -104,12 +104,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)../libs/glfw/include;$(SolutionDir)../libs/glad;include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Libs/glfw/include;$(SolutionDir)../Libs/glad;include;$(SolutionDir)../Libs/glm</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)../libs/glfw/src/$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)../Libs/glfw/src/$(Configuration)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3dll.lib;OpenGL32.lib;$(CoreLibraryDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -121,14 +121,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)../libs/glfw/include;$(SolutionDir)../libs/glad;include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)../Libs/glfw/include;$(SolutionDir)../Libs/glad;include;$(SolutionDir)../Libs/glm</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)../libs/glfw/src/$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)../Libs/glfw/src/$(Configuration)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3dll.lib;OpenGL32.lib;$(CoreLibraryDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
