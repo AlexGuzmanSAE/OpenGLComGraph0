@@ -8,6 +8,10 @@ Application applicaion;
 void check_keyboard(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     applicaion.KeyBoard( key, scancode, action, mods);
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+    {
+        glfwWindowShouldClose(window);
+    }
 }
 
 int main(void)

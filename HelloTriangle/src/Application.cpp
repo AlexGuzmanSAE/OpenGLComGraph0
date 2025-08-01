@@ -168,11 +168,7 @@ void Application::Draw()
 
 void Application::KeyBoard(int key, int scancode, int action, int mods)
 {
-	if (key == GLFW_KEY_P && action == GLFW_PRESS)
-	{
-		glfwWindowShouldClose(window);
-	}
-	else if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 	{
 		std::cout << "P" << std::endl;
 		//cambiar colores
