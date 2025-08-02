@@ -1,0 +1,13 @@
+﻿  Application.cpp
+  HelloPlane.cpp
+  Plane.cpp
+C:\Users\ALUMNOS\Documents\Repos_Git\OpenGLComGraph0-20250730T231048Z-1-001\OpenGLComGraph0\Plane\src\Plane.cpp(34,37): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\ALUMNOS\Documents\Repos_Git\OpenGLComGraph0-20250730T231048Z-1-001\OpenGLComGraph0\Plane\src\Plane.cpp(34,53): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\ALUMNOS\Documents\Repos_Git\OpenGLComGraph0-20250730T231048Z-1-001\OpenGLComGraph0\Plane\src\Plane.cpp(42,13): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\ALUMNOS\Documents\Repos_Git\OpenGLComGraph0-20250730T231048Z-1-001\OpenGLComGraph0\Plane\src\Plane.cpp(43,7): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\ALUMNOS\Documents\Repos_Git\OpenGLComGraph0-20250730T231048Z-1-001\OpenGLComGraph0\Plane\src\Plane.cpp(124,14): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Generando código...
+  glad.c
+Application.obj : error LNK2019: símbolo externo "unsigned int __cdecl InitializeProgram(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?InitializeProgram@@YAIV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z) sin resolver al que se hace referencia en la función "private: void __cdecl Application::SetUpShaderPassthru(void)" (?SetUpShaderPassthru@Application@@AEAAXXZ)
+Application.obj : error LNK2019: símbolo externo "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl loadTextFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loadTextFile@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV12@@Z) sin resolver al que se hace referencia en la función "private: void __cdecl Application::SetUpShaderPassthru(void)" (?SetUpShaderPassthru@Application@@AEAAXXZ)
+C:\Users\ALUMNOS\Documents\Repos_Git\OpenGLComGraph0-20250730T231048Z-1-001\OpenGLComGraph0\x64\Debug\Plane.exe : fatal error LNK1120: 2 externos sin resolver

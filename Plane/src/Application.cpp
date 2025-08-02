@@ -4,6 +4,7 @@
 #include "ShaderFuncs.h"
 #include <vector>
 #include "glm/gtc/type_ptr.hpp"
+#include "Plane.h"
 
 void Application::SetUpShaderPassthru()
 {
