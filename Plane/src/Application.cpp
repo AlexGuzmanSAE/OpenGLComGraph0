@@ -32,6 +32,12 @@ void Application::SetUpShaderTransforms()
 
 	mapUniforms["camera_id"] = glGetUniformLocation(mapShaders["transforms"], "camera");
 	mapUniforms["projection_id"] = glGetUniformLocation(mapShaders["transforms"], "projection");
+	mapUniforms["acumTrans_id"] = glGetUniformLocation(mapShaders["transforms"], "accumTrans");
+	mapUniforms["time_id"] = glGetUniformLocation(mapShaders["transforms"], "time");
+
+	mapUniforms["colors_id"] = glGetUniformLocation(mapShaders["transforms"], "colorPos");
+	mapUniforms["amplitude_id"] = glGetUniformLocation(mapShaders["transforms"], "amplitude");
+	mapUniforms["frecuence_id"] = glGetUniformLocation(mapShaders["transforms"], "frecuence");
 }
 
 void Application::SetUpShaders()
@@ -127,11 +133,19 @@ void Application::SetUpGeometrySingleArray()
 	glEnableVertexAttribArray(1);
 }
 
+void Application::SetUpPlane()
+{
+	plane.createPlane(50);
+
+}
+
 void Application::SetUp()
 {
 	SetUpShaders();
 	SetUpGeometry();
+	SetUpPlane();
 	//SetUpGeometrySingleArray();
+
 
 	glDepthFunc(GL_LESS);
 	glEnable(GL_DEPTH_TEST);
@@ -139,9 +153,16 @@ void Application::SetUp()
 	//inicializar params camara
 	eye = glm::vec3(0.0f, 0.0f, 2.0f);
 	center = glm::vec3(0.0f, 0.0f, 0.0f);
-	projection = glm::perspective(glm::radians(45.0f), (1020.0f/720.0f), 0.1f, 10.0f);
+	projection = glm::perspective(
+				 glm::radians(45.0f), 
+				 (1020.0f/720.0f), 0.1f, 200.0f);
 
+	accumTrans = glm::rotate(glm::mat4(1.0f), 
+				 glm::radians(45.0f), 
+				 glm::vec3(1.0f, 0.0f, 0.0f));
 	
+	glPolygonMode(GL_FRONT, GL_LINE);
+	glPolygonMode(GL_BACK, GL_LINE);
 }
 
 void Application::Update()
@@ -162,48 +183,50 @@ void Application::Draw()
 	
 	glUniform1f(mapUniforms["time_id"], time);
 	glUniform4f(mapUniforms["colors_id"], r, g, b, a);
+	glUniform1f(mapUniforms["amplitude_id"], amplitude);
+	glUniform1f(mapUniforms["frecuence_id"], frecuence);
+
 	glUniformMatrix4fv(mapUniforms["camera_id"], 1, GL_FALSE, glm::value_ptr(camera));
 	glUniformMatrix4fv(mapUniforms["projection_id"], 1, GL_FALSE, glm::value_ptr(projection));
+	glUniformMatrix4fv(mapUniforms["accumTrans_id"], 1, GL_FALSE, glm::value_ptr(accumTrans));
 
 	// Seleccionar la geometría (del triangulo)
-	glBindVertexArray(mapGeometry["triangulo"]);
-
+	//glBindVertexArray(mapGeometry["triangulo"]);
+	glBindVertexArray(plane.vao);
 	// glDraw()
-	glDrawArrays(GL_TRIANGLES, 0, 6);
+	glDrawArrays(GL_TRIANGLES, 0, plane.getNumVertex());
 
 }
 
 void Application::KeyBoard(int key, int scancode, int action, int mods)
 {
-	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+	
+	if (key == GLFW_KEY_P && action == GLFW_PRESS)
 	{
-		std::cout << "P" << std::endl;
-		//cambiar colores
 		r = 0.5f;
-		g = 1.0f;
+		g = 0.5f;
 		b = 0.5f;
 		a = 1.0f;
-	}
-	else if (key == GLFW_KEY_P && action == GLFW_RELEASE)
-	{
-		r = 1.0f;
-		g = 1.0f;
-		b = 1.0f;
-		a = 1.0f;
+		amplitude += 0.05f;
+		std::cout << amplitude << " => SUMA 0.05F" << std::endl;
 	}
 	else if (key == GLFW_KEY_O && action == GLFW_PRESS)
 	{
 		r = 2.0f;
 		g = 1.0f;
-		b = 1.0f;
+		b = 0.0f;
 		a = 1.0f;
+		amplitude -= 0.05f;
+		std::cout << amplitude << " => RESTA 0.05F" << std::endl;
 	}
 	else if (key == GLFW_KEY_I && action == GLFW_PRESS)
 	{
-		r = 1.0f;
+		r = 0.0f;
 		g = 2.0f;
 		b = 1.0f;
 		a = 1.0f;
+		frecuence += 1.0f;
+		std::cout << frecuence << " => SUMA 1.0F" << std::endl;
 	}
 	else if (key == GLFW_KEY_U && action == GLFW_PRESS)
 	{
@@ -211,5 +234,7 @@ void Application::KeyBoard(int key, int scancode, int action, int mods)
 		g = 0.0f;
 		b = 2.0f;
 		a = 1.0f;
+		frecuence -= 1.0f;
+		std::cout << frecuence << " => RESTA 1.0F" << std::endl;
 	}
 }

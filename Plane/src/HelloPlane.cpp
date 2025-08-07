@@ -23,7 +23,7 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    applicaion.window = glfwCreateWindow(1020, 720, "HelloTriangle", NULL, NULL);
+    applicaion.window = glfwCreateWindow(1240, 920, "HelloPlane", NULL, NULL);
     if (!applicaion.window)
     {
         glfwTerminate();

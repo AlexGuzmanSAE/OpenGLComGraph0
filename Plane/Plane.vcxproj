@@ -143,6 +143,14 @@
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\HelloPlane.cpp" />
     <ClCompile Include="src\Plane.cpp" />
+    <ClCompile Include="src\ShaderFuncs.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\fragmentPassthru.glsl" />
+    <None Include="Shaders\fragmentTrans.glsl" />
+    <None Include="Shaders\transforms.glsl" />
+    <None Include="Shaders\vertexPassthru.glsl" />
+    <None Include="Shaders\vertexTrans.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

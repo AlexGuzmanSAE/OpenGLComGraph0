@@ -3,17 +3,13 @@
 
 #include <iostream>
 #include "glad.h"
-
 #include "glm/glm.hpp"
-
-
-
 
 class Object3D
 {
 public:
 	GLuint	vao, //Vertex Array Object
-			pbo; //position buffer object
+			vbo; //vertex buffer object
 
 	int numVertex; //numero de vertices para este objeto
 	glm::vec3 angles;

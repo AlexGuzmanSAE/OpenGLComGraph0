@@ -17,7 +17,7 @@ Plane::Plane() : Object3D(),
 
 void Plane::createPlane(int side)
 {
-	float gs = 100.0; //geometry size (longitud total del plano)
+	float gs = 2.0; //geometry size (longitud total del plano)
 	this->side = side;
 	int TS = 2 * 3 * 2;	//2 triangulos de 3 vertices con 4 coords 
 	int VS = 2 * 3 * 4; //2 triangulos de 3 vertices con 2 coords 
@@ -116,6 +116,25 @@ void Plane::createPlane(int side)
 	textureCoords[10] = 1.0f;
 	textureCoords[11] = 1.0f;
 	*/
+	// Crear VAO
+	{
+		// Crear VertexArrayObject
+		GLuint  VBO_id, VBO_colorsID;
+
+
+		glGenVertexArrays(1, &vao);
+		glBindVertexArray(vao);
+
+
+		// Crear  TriangleGeometry VertexBufferObject
+		glGenBuffers(1, &vbo);
+		glBindBuffer(GL_ARRAY_BUFFER, vbo);
+		glBufferData(GL_ARRAY_BUFFER, getVertexSizeInBytes(),
+			&plane[0], GL_STATIC_DRAW);
+	}
+	// Pasar arreglo de vertices
+	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0); //geometria
+	glEnableVertexAttribArray(0);
 
 }
 

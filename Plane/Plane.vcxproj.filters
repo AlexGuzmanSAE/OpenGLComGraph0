@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{fabf1048-d73c-4836-99c5-7a4a2d1584d2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Application.h">
@@ -41,5 +44,25 @@
     <ClCompile Include="src\HelloPlane.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="src\ShaderFuncs.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\fragmentPassthru.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\fragmentTrans.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\transforms.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\vertexPassthru.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\vertexTrans.glsl">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
