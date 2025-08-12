@@ -1,16 +1,4 @@
-﻿  ADS.cpp
-  Application.cpp
-  Plane.cpp
-D:\[30] Proyectos\[30.01] Proyectos\OpenGLProyect\OpenGLComGraph0\ADS\src\Plane.cpp(34,37): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-D:\[30] Proyectos\[30.01] Proyectos\OpenGLProyect\OpenGLComGraph0\ADS\src\Plane.cpp(34,53): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-D:\[30] Proyectos\[30.01] Proyectos\OpenGLProyect\OpenGLComGraph0\ADS\src\Plane.cpp(42,13): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-D:\[30] Proyectos\[30.01] Proyectos\OpenGLProyect\OpenGLComGraph0\ADS\src\Plane.cpp(43,7): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-D:\[30] Proyectos\[30.01] Proyectos\OpenGLProyect\OpenGLComGraph0\ADS\src\Plane.cpp(122,19): warning C4101: 'VBO_colorsID': variable local sin referencia
-D:\[30] Proyectos\[30.01] Proyectos\OpenGLProyect\OpenGLComGraph0\ADS\src\Plane.cpp(122,11): warning C4101: 'VBO_id': variable local sin referencia
-D:\[30] Proyectos\[30.01] Proyectos\OpenGLProyect\OpenGLComGraph0\ADS\src\Plane.cpp(143,14): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  ShaderFuncs.cpp
-  Generando código...
-  glad.c
+﻿  Application.cpp
   ADS.vcxproj -> D:\[30] Proyectos\[30.01] Proyectos\OpenGLProyect\OpenGLComGraph0\x64\Debug\ADS.exe
   "pwsh.exe" no se reconoce como un comando interno o externo,
   programa o archivo por lotes ejecutable.

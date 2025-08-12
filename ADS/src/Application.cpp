@@ -32,12 +32,12 @@ void Application::SetUpShaderTransforms()
 
 	mapUniforms["camera_id"] = glGetUniformLocation(mapShaders["transforms"], "camera");
 	mapUniforms["projection_id"] = glGetUniformLocation(mapShaders["transforms"], "projection");
-	mapUniforms["acumTrans_id"] = glGetUniformLocation(mapShaders["transforms"], "accumTrans");
+	mapUniforms["accumTrans_id"] = glGetUniformLocation(mapShaders["transforms"], "accumTrans");
 	mapUniforms["time_id"] = glGetUniformLocation(mapShaders["transforms"], "time");
 
 	mapUniforms["colors_id"] = glGetUniformLocation(mapShaders["transforms"], "colorPos");
 	mapUniforms["amplitude_id"] = glGetUniformLocation(mapShaders["transforms"], "amplitude");
-	mapUniforms["frecuence_id"] = glGetUniformLocation(mapShaders["transforms"], "frecuence");
+	mapUniforms["frecuence_id"] = glGetUniformLocation(mapShaders["transforms"], "uniFrecuency");
 }
 
 void Application::SetUpShaders()
@@ -167,7 +167,7 @@ void Application::SetUp()
 
 void Application::Update()
 {
-	time += 0.0001f;
+	time += 0.01f;
 	// Actualizar center
 	center = glm::vec3(0.0f, 0.0f, 0.0f);
 	// Actualizar eye
