@@ -3,4 +3,31 @@
   ShaderFuncs.cpp
   Generando código...
   glad.c
-  HelloTriangle.vcxproj -> C:\Users\ALUMNOS\Documents\Repos_Git\OpenGLComGraph0-20250730T231048Z-1-001\OpenGLComGraph0\x64\Debug\HelloTriangle.exe
+  HelloTriangle.vcxproj -> D:\[30] Proyectos\[30.01] Proyectos\OpenGLProyect\OpenGLComGraph0\x64\Debug\HelloTriangle.exe
+  "pwsh.exe" no se reconoce como un comando interno o externo,
+  programa o archivo por lotes ejecutable.
+  Set-Content : No se puede encontrar una parte de la ruta de acceso 
+  'C:\WINDOWS\System32\WindowsPowerShell\v1.0\x64\Debug\vcpkg.applocal.log'.
+  En D:\VCPKG\vcpkg\scripts\buildsystems\msbuild\applocal.ps1: 12 Carácter: 5
+  +     Set-Content -Path $copiedFilesLog -Value "" -Encoding UTF8
+  +     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      + CategoryInfo          : ObjectNotFound: (C:\WINDOWS\Syst...kg.applocal.log:String) [Set-Content], DirectoryNotFo 
+     undException
+      + FullyQualifiedErrorId : GetContentWriterDirectoryNotFoundError,Microsoft.PowerShell.Commands.SetContentCommand
+   
+  Split-Path : No se puede enlazar el argumento al parámetro 'Path' porque es nulo.
+  En D:\VCPKG\vcpkg\scripts\buildsystems\msbuild\applocal.ps1: 76 Carácter: 39
+  +     $baseTargetBinaryDir = Split-Path $baseBinaryPath -parent
+  +                                       ~~~~~~~~~~~~~~~
+      + CategoryInfo          : InvalidData: (:) [Split-Path], ParameterBindingValidationException
+      + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.SplitPathCo 
+     mmand
+   
+  Split-Path : No se puede enlazar el argumento al parámetro 'Path' porque es nulo.
+  En D:\VCPKG\vcpkg\scripts\buildsystems\msbuild\applocal.ps1: 94 Carácter: 35
+  +     $targetBinaryDir = Split-Path $targetBinaryPath -parent
+  +                                   ~~~~~~~~~~~~~~~~~
+      + CategoryInfo          : InvalidData: (:) [Split-Path], ParameterBindingValidationException
+      + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.SplitPathCo 
+     mmand
+   
