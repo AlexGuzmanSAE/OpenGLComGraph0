@@ -3,6 +3,9 @@
 layout(location = 0) in vec4 vPosition;
 layout(location = 1) in vec2 vTextCoord;
 
+// To calculate pixel luminosity
+// L = 0.2126R + 0.7152G + 0.0722B;
+
 out vec2 texCoord;
 
 uniform float time;
@@ -47,9 +50,9 @@ void main()
 		vertColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 	texCoord = vTextCoord;
-	gl_Position = projection * 
-				  camera * 
-				  accumTrans * 
+	gl_Position = projection *
+				  camera *
+				  accumTrans *
 				  newPosition;  //equivale a hacer return gl_Position
 }
 

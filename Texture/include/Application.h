@@ -31,6 +31,8 @@ class Application
 	float time{0.0f};
 	float amplitude{ 0.125f };
 	float frecuence{ 17.0f };
+	
+	float interpolateVal{};
 
 	Plane plane;
 

@@ -27,7 +27,7 @@
     <ClCompile Include="src\glad.c">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\HelloPlane.cpp">
+    <ClCompile Include="src\HelloTexture.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\Plane.cpp">
@@ -64,6 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Lenna.png">
+      <Filter>Textures</Filter>
+    </Image>
+    <Image Include="Textures\SLA.png">
       <Filter>Textures</Filter>
     </Image>
   </ItemGroup>

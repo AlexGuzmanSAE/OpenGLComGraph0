@@ -7,6 +7,7 @@
 #include "Plane.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
+#include "algorithm"
 
 void Application::SetUpShaderPassthru()
 {
@@ -36,11 +37,13 @@ void Application::SetUpShaderTransforms()
 	mapUniforms["projection_id"] = glGetUniformLocation(mapShaders["transforms"], "projection");
 	mapUniforms["acumTrans_id"] = glGetUniformLocation(mapShaders["transforms"], "accumTrans");
 	mapUniforms["time_id"] = glGetUniformLocation(mapShaders["transforms"], "time");
+	mapUniforms["interpolateValue"] = glGetUniformLocation(mapShaders["transforms"], "interVal");
 
 	mapUniforms["colors_id"] = glGetUniformLocation(mapShaders["transforms"], "colorPos");
 	mapUniforms["amplitude_id"] = glGetUniformLocation(mapShaders["transforms"], "amplitude");
 	mapUniforms["frecuence_id"] = glGetUniformLocation(mapShaders["transforms"], "frecuence");
 	mapUniforms["tex0"] = glGetUniformLocation(mapShaders["transforms"], "tex0");
+	mapUniforms["tex1"] = glGetUniformLocation(mapShaders["transforms"], "tex1");
 }
 
 void Application::SetUpShaders()
@@ -176,6 +179,7 @@ void Application::SetUp()
 	SetUpGeometry();
 	SetUpPlane();
 	mapTextures["Lenna"] = SetUpTexture("Textures/Lenna.png");
+	mapTextures["SLA"] = SetUpTexture("Textures/SLA.png");
 	//SetUpGeometrySingleArray();
 
 
@@ -217,6 +221,7 @@ void Application::Draw()
 	glUniform4f(mapUniforms["colors_id"], r, g, b, a);
 	glUniform1f(mapUniforms["amplitude_id"], amplitude);
 	glUniform1f(mapUniforms["frecuence_id"], frecuence);
+	glUniform1f(mapUniforms["interpolateValue"], interpolateVal);
 
 	glUniformMatrix4fv(mapUniforms["camera_id"], 1, GL_FALSE, glm::value_ptr(camera));
 	glUniformMatrix4fv(mapUniforms["projection_id"], 1, GL_FALSE, glm::value_ptr(projection));
@@ -226,6 +231,12 @@ void Application::Draw()
 	//texture 0
 	glBindTexture(GL_TEXTURE_2D, mapTextures["Lenna"]);
 	glUniform1i(mapUniforms["tex0"], 0);
+	glActiveTexture(GL_TEXTURE1);
+
+	//Seleccionar las texturas
+	//texture 1
+	glBindTexture(GL_TEXTURE_2D, mapTextures["SLA"]);
+	glUniform1i(mapUniforms["tex1"], 1);
 	glActiveTexture(GL_TEXTURE0);
 
 	// Seleccionar la geometría (del triangulo)
@@ -239,41 +250,14 @@ void Application::Draw()
 
 void Application::KeyBoard(int key, int scancode, int action, int mods)
 {
-	
-	if (key == GLFW_KEY_P && action == GLFW_PRESS)
+
+	if (key == GLFW_KEY_UP && action == GLFW_REPEAT)
 	{
-		r = 0.5f;
-		g = 0.5f;
-		b = 0.5f;
-		a = 1.0f;
-		amplitude += 0.05f;
-		std::cout << amplitude << " => SUMA 0.05F" << std::endl;
+		interpolateVal += 0.1f;
 	}
-	else if (key == GLFW_KEY_O && action == GLFW_PRESS)
+	else if (key == GLFW_KEY_DOWN && action == GLFW_REPEAT)
 	{
-		r = 2.0f;
-		g = 1.0f;
-		b = 0.0f;
-		a = 1.0f;
-		amplitude -= 0.05f;
-		std::cout << amplitude << " => RESTA 0.05F" << std::endl;
+		interpolateVal -= 0.1f;
 	}
-	else if (key == GLFW_KEY_I && action == GLFW_PRESS)
-	{
-		r = 0.0f;
-		g = 2.0f;
-		b = 1.0f;
-		a = 1.0f;
-		frecuence += 1.0f;
-		std::cout << frecuence << " => SUMA 1.0F" << std::endl;
-	}
-	else if (key == GLFW_KEY_U && action == GLFW_PRESS)
-	{
-		r = 1.0f;
-		g = 0.0f;
-		b = 2.0f;
-		a = 1.0f;
-		frecuence -= 1.0f;
-		std::cout << frecuence << " => RESTA 1.0F" << std::endl;
-	}
+	interpolateVal = glm::clamp(interpolateVal, 0.0f, 1.0f);
 }
