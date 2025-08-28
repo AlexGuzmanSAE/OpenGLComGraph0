@@ -1,7 +1,7 @@
 #include "GLFW/glfw3.h"
 #include "Application.h"
 
-Application applicaion;
+Application application;
 
 void check_keyboard(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -29,7 +29,7 @@ int main(void)
         glfwTerminate();
         return -1;
     }
-    applicaion.SetUp();
+    application.SetUp();
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
@@ -41,10 +41,10 @@ int main(void)
     {
         /* Render here */
         //glClear(GL_COLOR_BUFFER_BIT);
-        applicaion.Update();
+        application.Update();
         /* Swap front and back buffers */
         //glfwSwapBuffers(window);
-        applicaion.Draw();
+        application.Draw();
         /* Poll for and process events */
         //glfwPollEvents();
     }

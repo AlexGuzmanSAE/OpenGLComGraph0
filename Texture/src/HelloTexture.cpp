@@ -4,11 +4,11 @@
 #include "iostream"
 
 
-Application applicaion;
+Application application;
 
 void check_keyboard(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-    applicaion.KeyBoard( key, scancode, action, mods);
+    application.KeyBoard( key, scancode, action, mods);
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
     {
         glfwWindowShouldClose(window);
@@ -23,15 +23,15 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    applicaion.window = glfwCreateWindow(1240, 920, "HelloTexture", NULL, NULL);
-    if (!applicaion.window)
+    application.window = glfwCreateWindow(1240, 920, "HelloTexture", NULL, NULL);
+    if (!application.window)
     {
         glfwTerminate();
         return -1;
     }
     
     /* Make the window's context current */
-    glfwMakeContextCurrent(applicaion.window);
+    glfwMakeContextCurrent(application.window);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
@@ -40,20 +40,20 @@ int main(void)
     }
     
     
-    glfwSetKeyCallback(applicaion.window, check_keyboard);
-    applicaion.SetUp();
+    glfwSetKeyCallback(application.window, check_keyboard);
+    application.SetUp();
 
     /* Loop until the user closes the window */
-    while (!glfwWindowShouldClose(applicaion.window))
+    while (!glfwWindowShouldClose(application.window))
     {
         /* Poll for and process events */
         glfwPollEvents();
-        applicaion.Update();
+        application.Update();
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        applicaion.Draw();
+        application.Draw();
         /* Swap front and back buffers */
-        glfwSwapBuffers(applicaion.window);
+        glfwSwapBuffers(application.window);
     }
 
     glfwTerminate();

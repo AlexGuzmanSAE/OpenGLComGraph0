@@ -1,2 +1,6 @@
 ﻿  Application.cpp
+C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\HeightMap\src\Application.cpp(297,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\HeightMap\src\Application.cpp(298,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+  HelloHeightMap.cpp
+  Generando código...
   HeightMap.vcxproj -> C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\x64\Debug\HeightMap.exe

@@ -141,7 +141,7 @@ void Application::SetUpGeometrySingleArray()
 
 void Application::SetupPlane()
 {
-	plane.createPlane(100);
+	plane.createPlane(300);
 
 	glGenVertexArrays(1, &plane.vao);
 	glBindVertexArray(plane.vao);
@@ -210,9 +210,15 @@ void Application::SetUp()
 				 glm::radians(45.0f), 
 				 (1020.0f/720.0f), 0.1f, 200.0f);
 
-	accumTrans = glm::rotate(glm::mat4(1.0f), 
-				 glm::radians(45.0f), 
-				 glm::vec3(1.0f, 0.0f, 0.0f));
+	accumTransRotationX = glm::rotate(glm::mat4(1.0f),
+		glm::radians(eyeXRot),
+		glm::vec3(0.0f, 1.0f, 0.0f));
+
+	accumTransRotationY = glm::rotate(glm::mat4(1.0f),
+		glm::radians(eyeYRot),
+		glm::vec3(1.0f, 0.0f, 0.0f));
+
+	accumTrans = accumTransRotationX * accumTransRotationY;
 	
 	glPolygonMode(GL_FRONT, GL_FILL);
 	glPolygonMode(GL_BACK, GL_LINE);
@@ -224,7 +230,19 @@ void Application::Update()
 	// Actualizar center
 	center = glm::vec3(0.0f, 0.0f, 0.0f);
 	// Actualizar eye
-	eye = glm::vec3(0.0f, 0.0f, 150.0f);
+	eye = glm::vec3(0.0f, 0.0f, 2.0f);
+
+	//Movement rotation
+	accumTransRotationX = glm::rotate(glm::mat4(1.0f),
+		glm::radians(eyeXRot),
+		glm::vec3(0.0f, 1.0f, 0.0f));
+
+	accumTransRotationY = glm::rotate(glm::mat4(1.0f),
+		glm::radians(eyeYRot),
+		glm::vec3(1.0f, 0.0f, 0.0f));
+
+	accumTrans = accumTransRotationX * accumTransRotationY;
+
 	// Actualizar camara
 	camera = glm::lookAt(eye, center, glm::vec3(0.0f, 1.0f, 0.0f));
 }
@@ -246,15 +264,15 @@ void Application::Draw()
 
 	//Seleccionar las texturas
 	//texture 0
+	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, mapTextures["HeightMapNoise"]);
 	glUniform1i(mapUniforms["tex0"], 0);
-	glActiveTexture(GL_TEXTURE1);
 
 	//Seleccionar las texturas
 	//texture 1
+	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, mapTextures["DiffuseMap"]);
 	glUniform1i(mapUniforms["tex1"], 1);
-	glActiveTexture(GL_TEXTURE0);
 
 	// Seleccionar la geometría (del triangulo)
 	//glBindVertexArray(mapGeometry["triangulo"]);
@@ -268,13 +286,14 @@ void Application::Draw()
 void Application::KeyBoard(int key, int scancode, int action, int mods)
 {
 
-	if (key == GLFW_KEY_UP && action == GLFW_REPEAT)
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 	{
-		interpolateVal += 0.1f;
+		glfwWindowShouldClose(window);
 	}
-	else if (key == GLFW_KEY_DOWN && action == GLFW_REPEAT)
-	{
-		interpolateVal -= 0.1f;
-	}
-	interpolateVal = glm::clamp(interpolateVal, 0.0f, 1.0f);
+}
+
+void Application::MouseInput(double xpos, double ypos)
+{
+	eyeXRot = xpos;
+	eyeYRot = ypos;
 }
