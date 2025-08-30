@@ -24,7 +24,7 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    application.window = glfwCreateWindow(1240, 920, "HelloHeightMap", NULL, NULL);
+    application.window = glfwCreateWindow(1240, 920, "HelloBumpMapping", NULL, NULL);
     if (!application.window)
     {
         glfwTerminate();
@@ -40,7 +40,7 @@ int main(void)
         return -1;
     }
     
-
+    glfwSetInputMode(application.window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
     glfwSetKeyCallback(application.window, check_keyboard);
     glfwSetCursorPosCallback(application.window, cursor_position_callback);
     application.SetUp();

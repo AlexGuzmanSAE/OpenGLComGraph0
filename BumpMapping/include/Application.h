@@ -19,9 +19,9 @@ class Application
 	glm::mat4 accumTrans;
 	glm::mat4 accumTransRotationX;
 	glm::mat4 accumTransRotationY;
-	glm::vec3 eye;
+	glm::vec3 eye{ 0.0f, 0.0f, 2.0f };
 	float eyeXRot{}, eyeYRot{};
-
+	float lightXMove{}, lightYMove{};
 	glm::vec3 center;
 
 	void SetUpShaderPassthru();

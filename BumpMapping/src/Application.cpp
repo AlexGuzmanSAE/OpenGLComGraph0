@@ -26,7 +26,7 @@ void Application::SetUpShaderPassthru()
 void Application::SetUpShaderTransforms()
 {
 	//Cargar shaders
-	std::string vertexShader{ loadTextFile("Shaders/vertexTrans.glsl") };
+	std::string vertexShader{ loadTextFile("Shaders/vertexPhong.glsl") };
 	std::string fragmentShader{ loadTextFile("Shaders/fragmentTrans.glsl") };
 
 	//Cargar programa
@@ -38,12 +38,14 @@ void Application::SetUpShaderTransforms()
 	mapUniforms["acumTrans_id"] = glGetUniformLocation(mapShaders["transforms"], "accumTrans");
 	mapUniforms["time_id"] = glGetUniformLocation(mapShaders["transforms"], "time");
 	mapUniforms["interpolateValue"] = glGetUniformLocation(mapShaders["transforms"], "interVal");
+	mapUniforms["lightPos"] = glGetUniformLocation(mapShaders["transforms"], "uniPosLight");
 
 	mapUniforms["colors_id"] = glGetUniformLocation(mapShaders["transforms"], "colorPos");
 	mapUniforms["amplitude_id"] = glGetUniformLocation(mapShaders["transforms"], "amplitude");
 	mapUniforms["frecuence_id"] = glGetUniformLocation(mapShaders["transforms"], "frecuence");
-	mapUniforms["tex0"] = glGetUniformLocation(mapShaders["transforms"], "tex0");
-	mapUniforms["tex1"] = glGetUniformLocation(mapShaders["transforms"], "tex1");
+	mapUniforms["RockDiffuse"] = glGetUniformLocation(mapShaders["transforms"], "rockDiffuse");
+	mapUniforms["RockNormals"] = glGetUniformLocation(mapShaders["transforms"], "rockNormal");
+	mapUniforms["Eye"] = glGetUniformLocation(mapShaders["transforms"], "eye");
 }
 
 void Application::SetUpShaders()
@@ -195,8 +197,8 @@ void Application::SetUp()
 	SetUpShaders();
 	SetUpGeometry();
 	SetupPlane();
-	mapTextures["HeightMapNoise"] = SetUpTexture("Textures/HeightMapNoise.png");
-	mapTextures["DiffuseMap"] = SetUpTexture("Textures/DiffuseMap.png");
+	mapTextures["RockNormals"] = SetUpTexture("Textures/RockNormal.jpg");
+	mapTextures["RockDiffuse"] = SetUpTexture("Textures/RockTexture.jpg");
 	//SetUpGeometrySingleArray();
 
 
@@ -213,11 +215,11 @@ void Application::SetUp()
 				 (1020.0f/720.0f), 0.1f, 200.0f);
 
 	accumTransRotationX = glm::rotate(glm::mat4(1.0f),
-		glm::radians(eyeXRot),
+		glm::radians(45.0f),
 		glm::vec3(0.0f, 1.0f, 0.0f));
 
 	accumTransRotationY = glm::rotate(glm::mat4(1.0f),
-		glm::radians(eyeYRot),
+		glm::radians(0.0f),
 		glm::vec3(1.0f, 0.0f, 0.0f));
 
 	accumTrans = accumTransRotationX * accumTransRotationY;
@@ -236,11 +238,11 @@ void Application::Update()
 
 	//Movement rotation
 	accumTransRotationX = glm::rotate(glm::mat4(1.0f),
-		glm::radians(eyeXRot),
+		glm::radians(0.0f),
 		glm::vec3(0.0f, 1.0f, 0.0f));
 
 	accumTransRotationY = glm::rotate(glm::mat4(1.0f),
-		glm::radians(eyeYRot),
+		glm::radians(45.0f),
 		glm::vec3(1.0f, 0.0f, 0.0f));
 
 	accumTrans = accumTransRotationX * accumTransRotationY;
@@ -259,6 +261,8 @@ void Application::Draw()
 	glUniform1f(mapUniforms["amplitude_id"], amplitude);
 	glUniform1f(mapUniforms["frecuence_id"], frecuence);
 	glUniform1f(mapUniforms["interpolateValue"], interpolateVal);
+	glUniform3f(mapUniforms["lightPos"], lightXMove, -lightYMove, 0.0f);
+	glUniform3f(mapUniforms["Eye"], eye.x, eye.y, eye.z);
 
 	glUniformMatrix4fv(mapUniforms["camera_id"], 1, GL_FALSE, glm::value_ptr(camera));
 	glUniformMatrix4fv(mapUniforms["projection_id"], 1, GL_FALSE, glm::value_ptr(projection));
@@ -267,14 +271,14 @@ void Application::Draw()
 	//Seleccionar las texturas
 	//texture 0
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, mapTextures["HeightMapNoise"]);
-	glUniform1i(mapUniforms["tex0"], 0);
-
+	glBindTexture(GL_TEXTURE_2D, mapTextures["RockDiffuse"]);
+	glUniform1i(mapUniforms["rockDiffuse"], 0);
 	//Seleccionar las texturas
 	//texture 1
 	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, mapTextures["DiffuseMap"]);
-	glUniform1i(mapUniforms["tex1"], 1);
+	glBindTexture(GL_TEXTURE_2D, mapTextures["RockNormals"]);
+	glUniform1i(mapUniforms["rockNormal"], 1);
+
 
 	// Seleccionar la geometría (del triangulo)
 	//glBindVertexArray(mapGeometry["triangulo"]);
@@ -296,6 +300,8 @@ void Application::KeyBoard(int key, int scancode, int action, int mods)
 
 void Application::MouseInput(double xpos, double ypos)
 {
-	eyeXRot = xpos;
-	eyeYRot = ypos;
+	/*eyeXRot = xpos;
+	eyeYRot = ypos;*/
+	lightXMove = xpos;
+	lightYMove = ypos;
 }

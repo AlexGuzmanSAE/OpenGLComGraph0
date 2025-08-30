@@ -148,11 +148,14 @@
   <ItemGroup>
     <None Include="Shaders\fragmentTrans.glsl" />
     <None Include="Shaders\transforms.glsl" />
+    <None Include="Shaders\vertexPhong.glsl" />
     <None Include="Shaders\vertexTrans.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\DiffuseMap.png" />
     <Image Include="Textures\HeightMapNoise.png" />
+    <Image Include="Textures\RockNormal.jpg" />
+    <Image Include="Textures\RockTexture.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
