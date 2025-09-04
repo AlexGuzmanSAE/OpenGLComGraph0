@@ -19,6 +19,9 @@
     <Filter Include="Textures">
       <UniqueIdentifier>{3a79f0fe-fac6-467e-8fda-c76e09406870}</UniqueIdentifier>
     </Filter>
+    <Filter Include="3DObjects">
+      <UniqueIdentifier>{060f148e-5350-4f0e-8697-aee89edcc40a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Application.h">
