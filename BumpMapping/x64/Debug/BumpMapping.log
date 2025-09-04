@@ -1,4 +1,4 @@
 ﻿  Application.cpp
-C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\BumpMapping\src\Application.cpp(305,15): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\BumpMapping\src\Application.cpp(306,15): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\BumpMapping\src\Application.cpp(321,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\BumpMapping\src\Application.cpp(322,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
   BumpMapping.vcxproj -> C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\x64\Debug\BumpMapping.exe
