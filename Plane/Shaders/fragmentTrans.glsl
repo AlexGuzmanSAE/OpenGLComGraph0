@@ -1,10 +1,10 @@
 #version 460 core
 
+uniform vec4 colorPos;
 out vec4 fragColor;
-in vec4 vertColor;
 
 void main()
 {
 	//.rgba * newColorPress.rgba;
-	fragColor = vertColor;
+    fragColor = colorPos;
 }

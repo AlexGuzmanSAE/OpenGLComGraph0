@@ -75,8 +75,8 @@ void main()
 	Light light;
 	light.ambient = vec4(0.3f, 0.3f, 0.3f, 1.0f);
 	light.diffuse = vec4(0.3f, 0.3f, 0.3f, 1.0f);
-	light.specular = vec4(0.3f, 0.3f, 0.3f, 1.0f);
-	light.position = vec3(0.0f, 1.0f, 0.0f);
+	light.specular = vec4(0.7f, 0.7f, 0.7f, 1.0f);
+	light.position = vec3(0.0f, 1.0f, -0.2f);
 	//light.position = uniPosLight;
 
 	Material mat;

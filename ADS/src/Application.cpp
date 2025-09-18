@@ -17,7 +17,7 @@ void Application::SetUpShaderPassthru()
 	std::cout << "Shaders compilados\n";
 
 	mapUniforms["time_id"] = glGetUniformLocation(mapShaders["passthru"], "time");
-	mapUniforms["colors_id"] = glGetUniformLocation(mapShaders["passthru"], "newColorPress");
+	mapUniforms["colors_id"] = glGetUniformLocation(mapShaders["passthru"], "colorPos");
 }
 
 void Application::SetUpShaderTransforms()

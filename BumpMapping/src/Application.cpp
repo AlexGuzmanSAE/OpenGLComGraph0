@@ -225,7 +225,7 @@ void Application::SetUp()
 	accumTrans = accumTransRotationX * accumTransRotationY;
 	
 	glPolygonMode(GL_FRONT, GL_FILL);
-	glPolygonMode(GL_BACK, GL_LINE);
+	glPolygonMode(GL_BACK, GL_FILL);
 }
 
 void Application::Update()

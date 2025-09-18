@@ -1,6 +1,16 @@
 ﻿  Application.cpp
-C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\HeightMap\src\Application.cpp(297,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\HeightMap\src\Application.cpp(298,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\HeightMap\src\Application.cpp(297,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\HeightMap\src\Application.cpp(298,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
   HelloHeightMap.cpp
+  Plane.cpp
+D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\HeightMap\src\Plane.cpp(35,6): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\HeightMap\src\Plane.cpp(36,6): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\HeightMap\src\Plane.cpp(44,14): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\HeightMap\src\Plane.cpp(45,7): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\HeightMap\src\Plane.cpp(127,14): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  ShaderFuncs.cpp
   Generando código...
-  HeightMap.vcxproj -> C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\x64\Debug\HeightMap.exe
+  glad.c
+  HeightMap.vcxproj -> D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\x64\Debug\HeightMap.exe
+  "pwsh.exe" no se reconoce como un comando interno o externo,
+  programa o archivo por lotes ejecutable.

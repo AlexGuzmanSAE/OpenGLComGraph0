@@ -49,24 +49,25 @@ void Application::SetUpGeometry()
 {
 	std::vector<GLfloat> triangle
 	{
-		-1.0f, 1.0f, -1.0f, 1.0f,  // vertice 0
-		-1.0f, -1.0f, -1.0f, 1.0f, // vertice 1
-		1.0f, -1.0f, -1.0f, 1.0f,  // vertice 2
+		-1.0f, 1.0f, -1.0f, 1.0f, // vertice 0
+		-1.0f, -1.0f, -1.0f, 1.0f,// vertice 1
+		1.0f, -1.0f, -1.0f, 1.0f, // vertice 2
 
-		-1.0f, 1.0f, -1.5f, 1.0f,  // vertice 0
-		-1.0f, -1.0f, -1.5f, 1.0f, // vertice 2 triang 2
-		1.0f, -1.0f, -0.5f, 1.0f,  // vertice 3 triang 2
+		-1.0f, 1.0f, -1.5f, 1.0f, // vertice 0
+		-1.0f, -1.0f, -1.5f, 1.0f,// vertice 1
+		1.0f, -1.0f,-0.4f, 1.0f,// vertice 2
+
 	};
-	
+
 	std::vector<GLfloat> vecTriangleColors
 	{
-		1.0f, 0.0f, 0.0f, 1.0f,  // RED
-		0.0f, 1.0f, 0.0f, 1.0f, // GREEN 
-		0.0f, 0.0f, 1.0f, 1.0f,  // BLUE
+		1.0f, 0.0f, 0.0f, 1.0f, // RED
+		0.0f, 1.0f, 0.0f, 1.0f, // GREEN
+		0.0f, 0.0f, 1.0f, 1.0f, // BLUE
 
-		1.0f, 0.0f, 0.0f, 1.0f,  // RED
-		0.0f, 0.0f, 1.0f, 1.0f,  // BLUE
-		1.0f, 1.0f, 1.0f, 1.0f, // GREEN 
+		1.0f, 0.0f, 0.0f, 1.0f, // RED
+		0.0f, 0.0f, 1.0f, 1.0f, // BLUE
+		0.0f, 1.0f, 0.0f, 1.0f, // GREEN
 	};
 
 	// Crear VertexArrayObject
@@ -147,12 +148,10 @@ void Application::SetUp()
 	//SetUpGeometrySingleArray();
 
 
-	glDepthFunc(GL_LESS);
-	glEnable(GL_DEPTH_TEST);
 
 	//inicializar params camara
-	eye = glm::vec3(0.0f, 0.0f, 2.0f);
-	center = glm::vec3(0.0f, 0.0f, 0.0f);
+	eye = glm::vec3(0.0f, 0.0f, 5.0f);
+	center = glm::vec3(0.0f, 0.0f, -1.0f);
 	projection = glm::perspective(
 				 glm::radians(45.0f), 
 				 (1020.0f/720.0f), 0.1f, 200.0f);
@@ -160,6 +159,8 @@ void Application::SetUp()
 	accumTrans = glm::rotate(glm::mat4(1.0f), 
 				 glm::radians(45.0f), 
 				 glm::vec3(1.0f, 0.0f, 0.0f));
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
 	
 	glPolygonMode(GL_FRONT, GL_LINE);
 	glPolygonMode(GL_BACK, GL_LINE);
@@ -169,7 +170,7 @@ void Application::Update()
 {
 	time += 0.0001f;
 	// Actualizar center
-	center = glm::vec3(0.0f, 0.0f, 0.0f);
+	center = glm::vec3(0.0f, 0.0f, 1.0f);
 	// Actualizar eye
 	eye = glm::vec3(0.0f, 0.0f, 2.0f);
 	// Actualizar camara

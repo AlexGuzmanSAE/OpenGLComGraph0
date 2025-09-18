@@ -229,15 +229,15 @@ void Application::Draw()
 
 	//Seleccionar las texturas
 	//texture 0
+	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, mapTextures["Lenna"]);
 	glUniform1i(mapUniforms["tex0"], 0);
-	glActiveTexture(GL_TEXTURE1);
 
 	//Seleccionar las texturas
 	//texture 1
+	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, mapTextures["SLA"]);
 	glUniform1i(mapUniforms["tex1"], 1);
-	glActiveTexture(GL_TEXTURE0);
 
 	// Seleccionar la geometría (del triangulo)
 	//glBindVertexArray(mapGeometry["triangulo"]);

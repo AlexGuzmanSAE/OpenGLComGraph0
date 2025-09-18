@@ -1,2 +1,8 @@
-﻿  HelloTriangle.cpp
-  HelloTriangle.vcxproj -> C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\x64\Debug\HelloTriangle.exe
+﻿  Application.cpp
+  HelloTriangle.cpp
+  ShaderFuncs.cpp
+  Generando código...
+  glad.c
+  HelloTriangle.vcxproj -> D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\x64\Debug\HelloTriangle.exe
+  "pwsh.exe" no se reconoce como un comando interno o externo,
+  programa o archivo por lotes ejecutable.

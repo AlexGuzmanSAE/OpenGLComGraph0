@@ -1,10 +1,10 @@
 #version 460 core
 
 out vec4 fragColor;
-in vec4 lightColor;
 in vec2 texCoord;
+in vec4 lightColor;
 uniform float interVal;
-in vec4 vertexPos;
+in vec4 vertexPos;	
 
 uniform sampler2D rockNormal;
 uniform sampler2D rockDiffuse;

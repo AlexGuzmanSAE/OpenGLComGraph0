@@ -7,6 +7,7 @@
 #include "map"
 #include "Plane.h"
 
+
 class Application
 {
 	std::map<std::string, GLuint> mapShaders;

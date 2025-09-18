@@ -63,7 +63,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Lenna.png">
+    <Image Include="Textures\Lenna.png">
       <Filter>Textures</Filter>
     </Image>
     <Image Include="Textures\SLA.png">

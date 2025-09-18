@@ -1,4 +1,6 @@
 ﻿  Application.cpp
-C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\BumpMapping\src\Application.cpp(321,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\BumpMapping\src\Application.cpp(322,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-  BumpMapping.vcxproj -> C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\x64\Debug\BumpMapping.exe
+D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\BumpMapping\src\Application.cpp(321,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\BumpMapping\src\Application.cpp(322,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+  BumpMapping.vcxproj -> D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\x64\Debug\BumpMapping.exe
+  "pwsh.exe" no se reconoce como un comando interno o externo,
+  programa o archivo por lotes ejecutable.

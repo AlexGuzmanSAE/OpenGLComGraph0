@@ -1,6 +1,16 @@
 ﻿  Application.cpp
-C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\FPS\src\Application.cpp(321,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\FPS\src\Application.cpp(322,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1395,5): warning MSB8012: TargetPath(C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\OpenGLComGraph0\x64\Debug\FPS.exe) no coincide con el valor de la propiedad OutputFile de Linker (C:\Users\ALUMNOS\Desktop\Myproject\Alejandro G NO BORRAR\Libs\glfw\src\Debug). Esto puede hacer que el proyecto no se compile correctamente. Para solucionar este problema, asegúrese de que los valores de propiedad $(OutDir), $(TargetName) y $(TargetExt) coinciden con el valor especificado en %(Link.OutputFile).
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1397,5): warning MSB8012: TargetName(FPS) no coincide con el valor de la propiedad OutputFile de Linker (Debug). Esto puede hacer que el proyecto no se compile correctamente. Para solucionar este problema, asegúrese de que los valores de propiedad $(OutDir), $(TargetName) y $(TargetExt) coinciden con el valor especificado en %(Link.OutputFile).
-LINK : fatal error LNK1104: no se puede abrir el archivo 'glfw3dll.lib'
+D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\FPS\src\Application.cpp(321,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\FPS\src\Application.cpp(322,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+  HelloFPS.cpp
+  Plane.cpp
+D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\FPS\src\Plane.cpp(35,6): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\FPS\src\Plane.cpp(36,6): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\FPS\src\Plane.cpp(44,14): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\FPS\src\Plane.cpp(45,7): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\FPS\src\Plane.cpp(127,14): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  ShaderFuncs.cpp
+  Generando código...
+  glad.c
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1402,5): warning MSB8012: TargetPath(D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\x64\Debug\FPS.exe) no coincide con el valor de la propiedad OutputFile de Linker (D:\Alejandro\Documentos\GitHub\Libs\glfw\src\Debug). Esto puede hacer que el proyecto no se compile correctamente. Para solucionar este problema, asegúrese de que los valores de propiedad $(OutDir), $(TargetName) y $(TargetExt) coinciden con el valor especificado en %(Link.OutputFile).
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1404,5): warning MSB8012: TargetName(FPS) no coincide con el valor de la propiedad OutputFile de Linker (Debug). Esto puede hacer que el proyecto no se compile correctamente. Para solucionar este problema, asegúrese de que los valores de propiedad $(OutDir), $(TargetName) y $(TargetExt) coinciden con el valor especificado en %(Link.OutputFile).
+LINK : fatal error LNK1104: no se puede abrir el archivo 'D:\Alejandro\Documentos\GitHub\OpenGLComGraph0\..\Libs\glfw\src\Debug'
